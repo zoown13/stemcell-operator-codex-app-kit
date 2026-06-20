@@ -1,0 +1,8 @@
+# Project-scoped Codex configuration.
+# Model, approval policy, and global sandbox settings intentionally inherit from
+# the user's Codex app or Cloud environment. Custom agents narrow their own
+# sandbox where appropriate.
+
+[agents]
+max_threads = 6
+max_depth = 1

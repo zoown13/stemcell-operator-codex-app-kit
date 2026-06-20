@@ -1,0 +1,4 @@
+# Codex-managed Worktrees already contain every tracked file.
+# Keep this file empty by default so ignored credentials and machine-local state
+# are not copied into a Worktree. Add only reviewed, non-secret ignored paths.
+# Never add kubeconfig, .env secrets, registry credentials, SSH keys, or tokens.

@@ -1,0 +1,29 @@
+# Repository-local Codex/tool caches
+.tools/
+.cache/
+.tmp/
+
+# Go build/test output
+bin/
+cover.out
+coverage.out
+*.test
+*.prof
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Local credentials and Kubernetes state
+.env
+.env.*
+!.env.example
+kubeconfig*
+*.kubeconfig
+
+# Generated local reports may contain machine-specific paths
+# Keep curated reports under docs/reports/ explicitly when intended.
+__pycache__/
+*.py[cod]

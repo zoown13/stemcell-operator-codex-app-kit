@@ -38,7 +38,7 @@ Never delete or replace `AGENTS.md`, `Instructions.md`, `.agents/`, `.codex/`, `
 
 ## Mode-specific completion
 
-- Cloud: run `./scripts/verify-cloud.sh`; mark Docker/kind work `LOCAL_REQUIRED`.
-- Worktree/Local: run `./scripts/verify-local.sh` when Docker/kind are available and safe.
+- Cloud: run `bash scripts/verify-cloud.sh`; mark Docker/kind work `LOCAL_REQUIRED`.
+- Worktree/Local: run `bash scripts/verify-local.sh` when Docker/kind are available and safe.
 
 M0 may be checked complete only when the project builds, generation is repeatable, tests pass, and required Local validation has either passed or is explicitly not part of M0.

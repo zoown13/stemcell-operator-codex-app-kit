@@ -26,7 +26,7 @@ In Codex settings:
 5. use the following setup script:
 
 ```bash
-./scripts/codex-cloud-setup.sh
+bash scripts/codex-cloud-setup.sh
 ```
 
 The setup script is idempotent. It installs Kubebuilder into a repository-local `.tools/bin` when absent, adds that directory to the shell path for the task, and downloads Go modules after M0 creates `go.mod`.
@@ -62,17 +62,17 @@ The tracked `.worktreeinclude` is intentionally empty except for comments. Do no
 In the Codex app project settings, configure the Worktree setup script as:
 
 ```bash
-./scripts/codex-worktree-setup.sh
+bash scripts/codex-worktree-setup.sh
 ```
 
 Recommended project actions:
 
 | Action | Script |
 |---|---|
-| Kit check | `./scripts/check-codex-kit.py` |
-| Cloud-safe verify | `./scripts/verify-cloud.sh` |
-| Local verify | `./scripts/verify-local.sh` |
-| kind safety preflight | `./scripts/kind-e2e-preflight.sh` |
+| Kit check | `python3 scripts/check-codex-kit.py` |
+| Cloud-safe verify | `bash scripts/verify-cloud.sh` |
+| Local verify | `bash scripts/verify-local.sh` |
+| kind safety preflight | `bash scripts/kind-e2e-preflight.sh` |
 
 Codex app may generate local-environment configuration under `.codex`. Review the generated file before committing it, especially any machine-specific paths or secrets.
 
@@ -99,7 +99,7 @@ Run a Cloud thread with:
 ```text
 Read AGENTS.md and docs/OPERATING_MODEL.md. State the execution mode,
 list the instruction files and project skills you discovered, and run
-./scripts/check-codex-kit.py. Do not edit files.
+python3 scripts/check-codex-kit.py. Do not edit files.
 ```
 
 Run a local Worktree thread with the same prompt, then verify the project action buttons execute in the Worktree directory.

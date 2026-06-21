@@ -49,7 +49,7 @@ Explicitly spawn architect before cross-layer changes.
 Spawn implementer for the approved slice, then code_reviewer and test_engineer.
 Spawn security_reviewer if the API, RBAC, runtime, image, Cloud setup, or automation boundary changes.
 
-Run ./scripts/verify-cloud.sh and targeted tests. Do not run or claim local Docker/kind tests.
+Run bash scripts/verify-cloud.sh and targeted tests. Do not run or claim local Docker/kind tests.
 Return a branch/PR or reviewable diff with the required Cloud handoff and LOCAL_REQUIRED checks.
 ```
 

@@ -28,6 +28,6 @@ Use `$stemcell-plan`, `$stemcell-cloud-task`, and the controller rules in `Instr
 3. Reconcile Deployment, Service, labels, probes, security context, owner references, ConfigMap watches, and least-privilege RBAC.
 4. Keep expression evaluation pure and preserve the same image across roles.
 5. Add fake-client/envtest coverage for create/update/no-op, Manual and Policy decisions, cooldown, status, invalid inputs, ownership, and hot-loop prevention.
-6. Run generation, targeted tests, and `./scripts/verify-cloud.sh`.
+6. Run generation, targeted tests, and `bash scripts/verify-cloud.sh`.
 7. Spawn `code_reviewer`, `test_engineer`, and `security_reviewer`; resolve P0/P1 findings.
 8. Return rollout, RBAC, probe, and kind transition checks as `LOCAL_REQUIRED`.

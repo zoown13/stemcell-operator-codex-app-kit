@@ -33,7 +33,7 @@
 ```bash
 unzip stemcell-operator-codex-app-kit.zip
 cd stemcell-operator-codex-app-kit
-./scripts/validate-repo.sh
+bash scripts/validate-repo.sh
 ```
 
 이후 다음 순서로 진행합니다.
@@ -55,7 +55,7 @@ prompts/cloud/01-m0-scaffold.md.
 
 Execution mode: Cloud.
 Complete M0 only. Explicitly spawn the required custom agents.
-Run ./scripts/verify-cloud.sh. Return a reviewable diff or Draft PR,
+Run bash scripts/verify-cloud.sh. Return a reviewable diff or Draft PR,
 and mark Docker/kind work LOCAL_REQUIRED.
 ```
 
@@ -69,14 +69,14 @@ Codex 앱 Automation은 로컬 실행입니다. 사용할 때는 전용 Worktree
 
 ```bash
 # 키트 구조, TOML, Skill, custom agent, shell/Python 구문 검사
-./scripts/validate-repo.sh
+bash scripts/validate-repo.sh
 
 # Go/Kubebuilder 구현 이후 Cloud-safe 검증
-./scripts/verify-cloud.sh
+bash scripts/verify-cloud.sh
 
 # 구현 이후 외부 kubeconfig를 거부하고 isolated kind E2E 실행
 unset KUBECONFIG
-./scripts/verify-local.sh
+bash scripts/verify-local.sh
 ```
 
 실제 Codex Cloud 및 kind 실행 전 설정은 `docs/CODEX_APP_SETUP.md`, 운영 경계는 `docs/OPERATING_MODEL.md`, 이전 API 키트에서의 변경 사항은 `docs/MIGRATION_FROM_API_KIT.md`를 확인합니다.

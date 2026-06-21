@@ -25,7 +25,7 @@ Optional tools may include Helm, kustomize, and vulnerability/SBOM scanners when
 git fetch --all --prune
 git worktree add ../stemcell-integration -b codex/local-integration origin/main
 cd ../stemcell-integration
-./scripts/codex-worktree-setup.sh
+bash scripts/codex-worktree-setup.sh
 ```
 
 Integrate Cloud branches one at a time and run Cloud-safe checks after each merge/cherry-pick.
@@ -36,7 +36,7 @@ For an existing disposable cluster, run before every direct `kubectl` operation:
 
 ```bash
 export STEMCELL_KIND_CLUSTER=stemcell-e2e
-./scripts/kind-e2e-preflight.sh
+bash scripts/kind-e2e-preflight.sh
 ```
 
 For the normal full E2E path, use `verify-local.sh`. It refuses an externally selected `KUBECONFIG`, creates a repository-local isolated kubeconfig, proves either the expected kind context or a safe no-context pre-creation state, and only then invokes the reviewed `make test-e2e` target.
@@ -44,7 +44,7 @@ For the normal full E2E path, use `verify-local.sh`. It refuses an externally se
 ```bash
 unset KUBECONFIG
 export STEMCELL_KIND_CLUSTER=stemcell-e2e
-./scripts/verify-local.sh
+bash scripts/verify-local.sh
 ```
 
 `--allow-missing` is an internal pre-creation guard for reviewed E2E tooling. Do not use it with a populated or external kubeconfig. Never bypass the preflight for a production, shared, or ambiguous context.
@@ -52,9 +52,9 @@ export STEMCELL_KIND_CLUSTER=stemcell-e2e
 ## 5. Validation sequence
 
 ```bash
-./scripts/verify-cloud.sh
+bash scripts/verify-cloud.sh
 unset KUBECONFIG
-./scripts/verify-local.sh
+bash scripts/verify-local.sh
 ```
 
 The exact Make targets evolve with the implementation. The local aggregate should include:

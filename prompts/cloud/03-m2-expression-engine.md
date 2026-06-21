@@ -24,6 +24,6 @@ Use `$stemcell-expression-engine` and `$stemcell-cloud-task`.
 3. Spawn `implementer` to implement only `internal/expression` and its tests.
 4. Support specified string/numeric comparisons, priority ordering, rule-name tie-break, default role, and cooldown decision semantics without I/O or global state.
 5. Add table-driven, boundary, malformed-input, tie, absent-signal, and fuzz tests.
-6. Run targeted tests, race checks when applicable, and `./scripts/verify-cloud.sh`.
+6. Run targeted tests, race checks when applicable, and `bash scripts/verify-cloud.sh`.
 7. Spawn `code_reviewer`, `test_engineer`, and `security_reviewer`; resolve P0/P1 findings.
 8. Return the deterministic contract and controller-integration assumptions. Mark kind no-flapping observation `LOCAL_REQUIRED`.

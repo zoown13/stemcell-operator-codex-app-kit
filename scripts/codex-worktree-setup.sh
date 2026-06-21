@@ -11,8 +11,8 @@ if command -v go >/dev/null 2>&1 && [[ -f go.mod ]]; then
   go mod download
 fi
 
-if [[ -x scripts/check-codex-kit.py ]]; then
-  scripts/check-codex-kit.py
+if [[ -f scripts/check-codex-kit.py ]]; then
+  python3 scripts/check-codex-kit.py
 fi
 
 cat <<MSG

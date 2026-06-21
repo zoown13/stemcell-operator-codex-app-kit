@@ -12,7 +12,7 @@ if [[ ! -f Makefile || ! -f go.mod ]]; then
 fi
 
 has_target() {
-  make -qp 2>/dev/null | awk -F: -v target="$1" '$1 == target { found=1 } END { exit !found }'
+  { make -qp 2>/dev/null || true; } | awk -F: -v target="$1" '$1 == target { found=1 } END { exit !found }'
 }
 
 run_target() {

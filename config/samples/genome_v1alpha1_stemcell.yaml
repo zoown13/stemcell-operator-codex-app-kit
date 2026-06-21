@@ -1,0 +1,5 @@
+apiVersion: genome.stemcell.io/v1alpha1
+kind: StemCell
+metadata:
+  name: stemcell-sample
+spec: {}

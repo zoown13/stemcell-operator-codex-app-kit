@@ -1,0 +1,8 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: stemcell-manager-role
+rules:
+  - apiGroups: ["genome.stemcell.io"]
+    resources: ["stemcells"]
+    verbs: ["get", "list", "watch"]

@@ -28,15 +28,16 @@ if ! command -v kubebuilder >/dev/null 2>&1; then
   url="${KUBEBUILDER_URL:-https://github.com/kubernetes-sigs/kubebuilder/releases/download/v${version}/kubebuilder_${os}_${arch}}"
   tmp="${TOOLS_DIR}/kubebuilder.tmp"
 
+  if [[ -z "${KUBEBUILDER_SHA256:-}" ]]; then
+    echo "error: KUBEBUILDER_SHA256 is required before downloading Kubebuilder in Cloud." >&2
+    echo "Provide the checksum for ${url}, or preinstall kubebuilder in the Cloud image." >&2
+    exit 1
+  fi
+
   echo "Installing Kubebuilder ${version} into ${TOOLS_DIR}"
   echo "Source: ${url}"
   curl --fail --location --silent --show-error --output "${tmp}" "${url}"
-
-  if [[ -n "${KUBEBUILDER_SHA256:-}" ]]; then
-    printf '%s  %s\n' "${KUBEBUILDER_SHA256}" "${tmp}" | sha256sum --check --status
-  else
-    echo "note: KUBEBUILDER_SHA256 is unset; set it in the Cloud environment to enforce artifact checksum verification."
-  fi
+  printf '%s  %s\n' "${KUBEBUILDER_SHA256}" "${tmp}" | sha256sum --check --status
 
   chmod +x "${tmp}"
   mv "${tmp}" "${TOOLS_DIR}/kubebuilder"

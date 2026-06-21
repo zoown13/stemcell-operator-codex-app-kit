@@ -25,7 +25,7 @@ Use when the computer may sleep or turn off.
    - required specialist agents;
    - a branch/PR or diff handoff contract.
 5. Never have multiple tasks edit the same generated manifests, `go.mod`, shared API types, or backlog checkboxes.
-6. The next Local Worktree session integrates tasks one at a time and runs `./scripts/verify-local.sh`.
+6. The next Local Worktree session integrates tasks one at a time and runs `bash scripts/verify-local.sh`.
 
 Use `prompts/cloud/07-overnight-batch.md` as the operator prompt template.
 

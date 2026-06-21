@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "${ROOT}"
 
-./scripts/check-codex-kit.py
+python3 scripts/check-codex-kit.py
 
 if [[ ! -f Makefile || ! -f go.mod ]]; then
   echo "Cloud verification: kit-only repository; Go/Kubebuilder project has not been scaffolded yet."

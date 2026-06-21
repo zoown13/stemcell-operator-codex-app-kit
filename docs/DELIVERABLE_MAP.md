@@ -15,7 +15,7 @@
 | Optional background Automation | `docs/AUTOMATIONS.md`, `prompts/automation/` |
 | GitHub PR/review and email signal | `docs/GITHUB_INTEGRATION.md` |
 | Environment and validation helpers | `scripts/` |
-| Verify the kit contains no API-based Codex workflow | `scripts/check-codex-kit.py` |
+| Verify the kit contains no API-based Codex workflow | `python3 scripts/check-codex-kit.py` |
 | Migration notes from the prior API kit | `docs/MIGRATION_FROM_API_KIT.md` |
 | Pull-request evidence contract | `.github/pull_request_template.md` |
 | Kit release marker | `KIT_VERSION` |

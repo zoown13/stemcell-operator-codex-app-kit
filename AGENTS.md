@@ -53,16 +53,16 @@ Not a completion gate in Cloud unless explicitly available and demonstrated:
 - private registry, VPN, or enterprise cluster access;
 - production or shared cluster operations.
 
-Use `./scripts/verify-cloud.sh` and report skipped local-only checks.
+Use `bash scripts/verify-cloud.sh` and report skipped local-only checks.
 
 ### Local or Worktree
 
 Use a Worktree for isolated implementation, integration, and background Automation. Use Local only when intentional edits to the main checkout are desired.
 
-For the full E2E path, unset external kubeconfig state and use `./scripts/verify-local.sh`; it establishes an isolated safe pre-creation/existing-cluster guard. Before any additional direct `kubectl` command, run:
+For the full E2E path, unset external kubeconfig state and use `bash scripts/verify-local.sh`; it establishes an isolated safe pre-creation/existing-cluster guard. Before any additional direct `kubectl` command, run:
 
 ```bash
-./scripts/kind-e2e-preflight.sh
+bash scripts/kind-e2e-preflight.sh
 ```
 
 Never use a production, shared, or ambiguous context.

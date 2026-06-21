@@ -12,7 +12,7 @@ description: Execute one bounded StemCell Operator task in Codex Cloud with expl
 3. Spawn `architect` for cross-layer work.
 4. Implement only the approved slice; do not edit another active task's owned files.
 5. Spawn `code_reviewer` and `test_engineer`; add `security_reviewer` when applicable.
-6. Run `./scripts/verify-cloud.sh` plus targeted checks.
+6. Run `bash scripts/verify-cloud.sh` plus targeted checks.
 7. Do not claim Docker, kind, private registry, VPN, or local-cluster validation.
 8. Return a branch/PR or diff and a `LOCAL_REQUIRED` checklist.
 

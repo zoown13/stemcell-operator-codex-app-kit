@@ -154,7 +154,7 @@ Map every behavior change to `SC-*` criteria and the narrowest test layer that p
 Typical Cloud checks:
 
 ```bash
-./scripts/verify-cloud.sh
+bash scripts/verify-cloud.sh
 ```
 
 Once the Makefile exists, this should cover formatting, vet, unit tests, envtest where available, generation cleanliness, and race tests as appropriate. A Cloud environment blocker is a documented blocker, not a pass.
@@ -165,13 +165,13 @@ For the full E2E path, refuse external kubeconfig state and let the helper estab
 
 ```bash
 unset KUBECONFIG
-./scripts/verify-local.sh
+bash scripts/verify-local.sh
 ```
 
 Before any additional direct `kubectl` operation against the created cluster, run:
 
 ```bash
-./scripts/kind-e2e-preflight.sh
+bash scripts/kind-e2e-preflight.sh
 ```
 
 A test passes only when it observes the intended behavior, including Ready conditions, role endpoint, rollout/rollback state, and identical image digest where relevant.

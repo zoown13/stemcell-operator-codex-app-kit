@@ -93,8 +93,8 @@ This kit intentionally does not promise that one agent will work continuously fo
 ## Validate the kit
 
 ```bash
-./scripts/check-codex-kit.py
-./scripts/validate-repo.sh
+python3 scripts/check-codex-kit.py
+bash scripts/validate-repo.sh
 ```
 
 ## License

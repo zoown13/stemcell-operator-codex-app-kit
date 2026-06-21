@@ -33,6 +33,6 @@ When applying this kit to a repository created from the previous package:
 1. create a migration branch;
 2. remove only the old Codex API workflows/scripts, preserving normal build/test CI;
 3. copy the new `AGENTS.md`, `Instructions.md`, `.agents/`, `.codex/`, `docs/`, `prompts/`, and helper scripts after reviewing project-specific differences;
-4. run `./scripts/check-codex-kit.py` and `./scripts/validate-repo.sh`;
+4. run `python3 scripts/check-codex-kit.py` and `bash scripts/validate-repo.sh`;
 5. configure Codex Cloud and Codex app using `docs/CODEX_APP_SETUP.md`;
 6. test one read-only Cloud task and one read-only Worktree task before implementation.

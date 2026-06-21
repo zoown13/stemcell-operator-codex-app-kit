@@ -50,8 +50,8 @@ if [[ -f go.mod ]]; then
   go mod download
 fi
 
-if [[ -x scripts/check-codex-kit.py ]]; then
-  scripts/check-codex-kit.py
+if [[ -f scripts/check-codex-kit.py ]]; then
+  python3 scripts/check-codex-kit.py
 fi
 
 echo "Cloud setup complete. Docker, kind, kubeconfig, registry, VPN, and production credentials were not configured."

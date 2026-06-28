@@ -37,7 +37,7 @@ Use `$stemcell-scaffold` and `$stemcell-cloud-task`.
 3. Spawn `implementer` to initialize a Kubebuilder Go v4 project with group `genome.stemcell.io`, version `v1alpha1`, kind `StemCell`.
 4. Add only the M0 API/controller skeleton and package layout. Do not implement M1+ behavior.
 5. Normalize Make targets required by the repository instructions. Normal CI may be added, but do not add a Codex API action or Codex API key.
-6. Run `./scripts/verify-cloud.sh` and targeted build/generation checks supported by the environment.
+6. Run `bash scripts/verify-cloud.sh` and targeted build/generation checks supported by the environment.
 7. Explicitly spawn `code_reviewer`, `test_engineer`, and `security_reviewer`; resolve P0/P1 findings.
 8. Return the Cloud handoff. Mark Docker image execution and kind checks `LOCAL_REQUIRED` rather than claiming they passed.
 

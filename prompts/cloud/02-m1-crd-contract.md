@@ -29,6 +29,6 @@ Use `$stemcell-crd` and `$stemcell-cloud-task`.
 4. Implement bounded enums, fields, defaults, status subresource, printer columns, schema/CEL validation where appropriate, and Manual/Policy samples.
 5. Do not add arbitrary command, source, executable URL, per-role image, plugin, model-download, or template execution fields.
 6. Add serialization/defaulting/validation tests, including invalid roles, modes, operators, duplicate rule names, unsafe fields, and bounds.
-7. Run generation plus `./scripts/verify-cloud.sh`.
+7. Run generation plus `bash scripts/verify-cloud.sh`.
 8. Spawn `code_reviewer`, `test_engineer`, and `security_reviewer`; resolve P0/P1 findings.
 9. Return a Cloud handoff with generated files and any admission behavior that still needs Local proof.

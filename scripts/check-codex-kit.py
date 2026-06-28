@@ -6,7 +6,6 @@ from __future__ import annotations
 import os
 import pathlib
 import re
-import stat
 import sys
 import tomllib
 
@@ -128,7 +127,7 @@ def read_text(path: pathlib.Path) -> str:
     return path.read_text(encoding="utf-8", errors="strict")
 
 
-def validate_required_files(errors: list[str]) -> None:
+def validate_required_files(errors: list[str], warnings: list[str]) -> None:
     for relative in sorted(REQUIRED_FILES):
         path = ROOT / relative
         if not path.is_file():
@@ -137,7 +136,10 @@ def validate_required_files(errors: list[str]) -> None:
     for relative in sorted(REQUIRED_EXECUTABLES):
         path = ROOT / relative
         if path.exists() and not os.access(path, os.X_OK):
-            errors.append(f"required helper is not executable: {relative}")
+            warnings.append(
+                "helper is not directly executable; invoke it with an explicit "
+                f"interpreter in Codex App Worktrees: {relative}"
+            )
 
     for relative in sorted(FORBIDDEN_PATHS):
         path = ROOT / relative
@@ -151,6 +153,36 @@ def validate_required_files(errors: list[str]) -> None:
             errors.append(f"generated local artifact must be removed: {rel(path)}")
         if path.is_file() and path.suffix in {".zip", ".gz", ".tgz", ".pyc"}:
             errors.append(f"nested generated artifact must be removed: {rel(path)}")
+
+
+def validate_text_format(errors: list[str]) -> None:
+    text_extensions = {".md", ".toml", ".sh", ".py"}
+    text_files = {
+        ROOT / relative
+        for relative in REQUIRED_FILES
+        if pathlib.Path(relative).suffix in text_extensions
+        or relative in {"KIT_VERSION", ".gitignore", ".worktreeinclude"}
+    }
+
+    for path in sorted(text_files):
+        if not path.is_file():
+            continue
+        data = path.read_bytes()
+        if b"\r\n" in data:
+            errors.append(f"text file must use LF line endings: {rel(path)}")
+
+    for relative in sorted(REQUIRED_EXECUTABLES):
+        path = ROOT / relative
+        if not path.is_file():
+            continue
+        try:
+            first_line = read_text(path).splitlines()[0]
+        except IndexError:
+            errors.append(f"required helper is empty and missing shebang: {relative}")
+            continue
+        expected = "#!/usr/bin/env python3" if path.suffix == ".py" else "#!/usr/bin/env bash"
+        if first_line != expected:
+            errors.append(f"required helper has unexpected shebang: {relative}")
 
 
 def validate_config(errors: list[str]) -> None:
@@ -324,7 +356,9 @@ def validate_consistency(errors: list[str], agent_names: set[str], skill_names: 
 
 def main() -> int:
     errors: list[str] = []
-    validate_required_files(errors)
+    warnings: list[str] = []
+    validate_required_files(errors, warnings)
+    validate_text_format(errors)
     validate_config(errors)
     agent_names = validate_agents(errors)
     skill_names = validate_skills(errors)
@@ -335,7 +369,16 @@ def main() -> int:
         print("Codex app kit validation failed:", file=sys.stderr)
         for error in errors:
             print(f"- {error}", file=sys.stderr)
+        if warnings:
+            print("Codex app kit validation warnings:", file=sys.stderr)
+            for warning in warnings:
+                print(f"- {warning}", file=sys.stderr)
         return 1
+
+    if warnings:
+        print("Codex app kit validation warnings:", file=sys.stderr)
+        for warning in warnings:
+            print(f"- {warning}", file=sys.stderr)
 
     print(
         "Codex app kit validation passed: "

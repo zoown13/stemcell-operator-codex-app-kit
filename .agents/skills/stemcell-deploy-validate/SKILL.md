@@ -9,8 +9,8 @@ description: Run a reproducible StemCell Operator validation in an ephemeral kin
 
 1. Verify Docker, kind, and kubectl availability.
 2. Choose a disposable name through `STEMCELL_KIND_CLUSTER`; the project E2E target must honor it.
-3. Unset any external `KUBECONFIG` and run `./scripts/verify-local.sh`. The helper creates an isolated repository-local kubeconfig and proves a safe existing-or-missing-cluster state before invoking E2E tooling.
-4. Before every additional direct `kubectl` command, run `./scripts/kind-e2e-preflight.sh`; abort unless context and loopback API server match the disposable kind cluster.
+3. Unset any external `KUBECONFIG` and run `bash scripts/verify-local.sh`. The helper creates an isolated repository-local kubeconfig and proves a safe existing-or-missing-cluster state before invoking E2E tooling.
+4. Before every additional direct `kubectl` command, run `bash scripts/kind-e2e-preflight.sh`; abort unless context and loopback API server match the disposable kind cluster.
 5. Never reuse the user's default kubeconfig or any production/shared context.
 
 ## Validation sequence
